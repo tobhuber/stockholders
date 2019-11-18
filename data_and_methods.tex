@@ -34,6 +34,14 @@ transformations.
 	Thus allowing statistically or economically information.
 	
 \subsection{Penalized Linear}
+	When the number of predictors P approaches the number of observations T,
+	the linear model begins to overfit noise and thus becomes inefficient or inconsistent.
+	This problem obviously gets even worse with a bad signal-to-noise ratio.
+	To avoid overfit the number of estimated paramters must be reduced.
+	The idea to achieve this is to penalize the objective function with a penalty
+	function (e.g. the elastic net) and thus deteriorates the in-sample performance
+	in hopes of improving the out-of-sample stability.
+
 \subsection{Dimension Reduction: PCR and PLS}
 \subsection{Generalized Linear}
 \subsection{Boosted Regression Trees and Random Forest}

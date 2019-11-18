@@ -1,20 +1,23 @@
-NAME1=stockholders:
+NAME := data_and_methods
 
-.PHONY: show clean distclean dev
+default: prep doc
+all: prep doc
 
-default dev all: distclean build/$(NAME1).pdf
-default dev all: distclean build/$(NAME2).pdf
+prep: svg lst
+
+doc:	prep build/$(NAME).pdf
 
 dev: CONT_FLAG = -pvc
+dev: latex-force prep story
 
-build/%.pdf: %.tex *.sty
+svg: $(patsubst %.svg,build/%.pdf,$(wildcard images/*.svg))
+lst: $(patsubst %.tex,build/%.pdf,$(wildcard listings/*.tex))
+
+build/%.pdf: %.tex
 	mkdir -p build
-	latexmk $(CONT_FLAG) -pdf -g -f -auxdir=build -outdir=build $<
+	latexmk $(CONT_FLAG) -shell-escape -pdf -g -f -auxdir=build -outdir=build $<
 
 show: build/$(NAME1).pdf
-	xdg-open $<
-
-show: build/$(NAME2).pdf
 	xdg-open $<
 
 clean:
@@ -23,4 +26,3 @@ clean:
 
 distclean: clean
 	rm -f build/$(NAME1).pdf
-	rm -f build/$(NAME2).pdf
