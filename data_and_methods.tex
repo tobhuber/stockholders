@@ -24,16 +24,16 @@ transformations.
 	subject to a specific set of tuning parameter values. The "validation" period
 	tunes the parameters by simulating an out-of-sample-test of the model
 	to produce reliable out-of-sample performance. The "testing" period is truly
-	out-of-sample and therefore is used to evaluate a method’s predictiveperformance.
+	out-of-sample and therefore is used to evaluate a method’s predictive performance.
 
 \subsection{Simple Linear}
-	Describing the model by simple linear predictive regression it will perform poorly in a high 
-	dimension problem nevertheless we use it as reference point for emphasizing the distinctive 
+	Describing the model by simple linear predictive regression it will perform poorly in a high
+	dimension problem nevertheless we use it as reference point for emphasizing the distinctive
 	features of more sophisticated methods.
 	However it does not allow for nonlinear effects or interactions between predictors.
 	Yet in some cases it is possible to improve accuracy by using weighted least squares.
 	Thus allowing statistically or economically information.
-	
+
 \subsection{Penalized Linear}
 	When the number of predictors P approaches the number of observations T,
 	the linear model begins to overfit noise and thus becomes inefficient or inconsistent.
@@ -44,6 +44,14 @@ transformations.
 	in hopes of improving the out-of-sample stability.
 
 \subsection{Dimension Reduction: PCR and PLS}
+	PCR consits of to major steps. During the first step PCA creates linear combinations
+	of the regressors. In the second step, a few leading components are used for regression.
+	PCR fails in forecasting returns during the dimension reduction which is ja major drawback.
+	PLS estimates the univariate return prediction coefficient for each predictor via OLS
+	and calculates an aggregate component by averaging these values with different weights
+	with higher weights on stronger univariate predictors. Thus PLS does not have the
+	same issues as PCR considering the forecasting aspect.
+
 \subsection{Generalized Linear}
 	Finding a linear model for a complex and nonlinear function introduces some problems:
 	\begin{itemize}
@@ -63,6 +71,17 @@ transformations.
 	For this the 'group lasso' a specialized spline function is used.
 	
 \subsection{Boosted Regression Trees and Random Forest}
+	Regression trees have no Parameters but a build in logic instead.
+	The tree grows in a sequence of steps in which a branch sorts data assigned from
+	a preceding step into different categories based on a variable of the predictor
+	thus creating groups of observations with similar behaviour or logic.
+	Forecasts are made by calculating the average of outcome variables inside each group.
+	While trees are invariant to monotonic transformations of predictors they are
+	also most proned to overfit and therefore must be regulized which can be done
+	by either "Boosting" or "Random Forest". Both ideas recursively combine
+	forecasts of multiple trees but while Boosting uses many simplified trees
+	Random Trees tries to combine a high variation of trees to reduce their correlation.
+
 \subsection{Neural Networks}
 
 
