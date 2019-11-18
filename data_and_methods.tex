@@ -5,33 +5,24 @@
 
 \begin{document}
 
-Three fundamental elements:
-\begin{itemize}
-\item statistical model describing a method’s general functional form for risk premium
-predictions
-\item second is an objective function for estimating model parameters
-\item even with a small number of predictors, the set of model permutations expands rapidly when one considers nonlinear predictor
-transformations.
-\end{itemize}
-
 \section{Methodology}
 
 \subsection{Sample Splitting And Tuning Via Validation}
 	Hyperparameters (initial parameters set prior to the machine learning process)
 	drastically affect the complexity and therefore overall performance of the model.
 	An adaptive approach is used where the sample is split into the 3 disjoint time periods
-	"training", "validation" and "testing". The "training" period estimates the model
-	subject to a specific set of tuning parameter values. The "validation" period
+	'training', 'validation' and 'testing'. The 'training' period estimates the model
+	subject to a specific set of tuning parameter values. The 'validation' period
 	tunes the parameters by simulating an out-of-sample-test of the model
-	to produce reliable out-of-sample performance. The "testing" period is truly
+	to produce reliable out-of-sample performance. The 'testing' period is truly
 	out-of-sample and therefore is used to evaluate a method’s predictive performance.
 
 \subsection{Simple Linear}
-	Describing the model by simple linear predictive regression it will perform poorly in a high
-	dimension problem nevertheless we use it as reference point for emphasizing the distinctive
-	features of more sophisticated methods.
-	However it does not allow for nonlinear effects or interactions between predictors.
-	Yet in some cases it is possible to improve accuracy by using weighted least squares.
+	Describing the model by simple linear predictive regression will perform poorly in a high
+	dimension problem. Nevertheless it will be used as reference point for emphasizing
+	the distinctive features of more sophisticated methods.
+	While it does not allow for nonlinear effects or interactions between predictors
+	it is sometimes possible to improve accuracy by using weighted least squares.
 	Thus allowing statistically or economically information.
 
 \subsection{Penalized Linear}
@@ -47,8 +38,9 @@ transformations.
 	PCR consits of to major steps. During the first step PCA creates linear combinations
 	of the regressors. In the second step, a few leading components are used for regression.
 	PCR fails in forecasting returns during the dimension reduction which is ja major drawback.
+	\newline
 	PLS estimates the univariate return prediction coefficient for each predictor via OLS
-	and calculates an aggregate component by averaging these values with different weights
+	and calculates an aggregate component by averaging these weighted values
 	with higher weights on stronger univariate predictors. Thus PLS does not have the
 	same issues as PCR considering the forecasting aspect.
 
@@ -59,7 +51,7 @@ transformations.
 		\item estimation errors
 		\item intrinsic errors
 	\end{itemize}
-	Approximation error can be reduced by including more flexible specifications to improve the 
+	Approximation error can be reduced by including more flexible specifications to improve the
 	models ability to approximate the 'true' model.
 	Estimation error is determined by the date.
 	Intrinsic error cannot be reduced as it is the general randomness in financial markets.
@@ -69,7 +61,7 @@ transformations.
 	tools used for the Simple Linear Model.
 	Using penalization is necessary due to expansion quickly multiplies the number of model parameter.
 	For this the 'group lasso' a specialized spline function is used.
-	
+
 \subsection{Boosted Regression Trees and Random Forest}
 	Regression trees have no Parameters but a build in logic instead.
 	The tree grows in a sequence of steps in which a branch sorts data assigned from
@@ -78,7 +70,7 @@ transformations.
 	Forecasts are made by calculating the average of outcome variables inside each group.
 	While trees are invariant to monotonic transformations of predictors they are
 	also most proned to overfit and therefore must be regulized which can be done
-	by either "Boosting" or "Random Forest". Both ideas recursively combine
+	by either 'Boosting' or 'Random Forest'. Both ideas recursively combine
 	forecasts of multiple trees but while Boosting uses many simplified trees
 	Random Trees tries to combine a high variation of trees to reduce their correlation.
 
@@ -94,12 +86,12 @@ transformations.
 	into one ultimate outcome prediction.
 	Recent literature suggests that deeper networks (more hidden layers) can achieve the same
 	accuracy with less input parameters.
-	However training a very deep neural network is challenging and thus for small data sets 
+	However training a very deep neural network is challenging and thus for small data sets
 	a compact network often performs best.
-	Because of their high degree of nonlinearity and nonconvexity brute force optimisation is 
-	highly computationally intensive. Therefore a common solution for training is stochastic 
+	Because of their high degree of nonlinearity and nonconvexity brute force optimisation is
+	highly computationally intensive. Therefore a common solution for training is stochastic
 	gradient descent where only a random set of data is used.
-	
+
 
 
 \end{document}
