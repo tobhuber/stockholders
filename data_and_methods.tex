@@ -45,6 +45,23 @@ transformations.
 
 \subsection{Dimension Reduction: PCR and PLS}
 \subsection{Generalized Linear}
+	Finding a linear model for a complex and nonlinear function introduces some problems:
+	\begin{itemize}
+		\item approximation errors
+		\item estimation errors
+		\item intrinsic errors
+	\end{itemize}
+	Approximation error can be reduced by including more flexible specifications to improve the 
+	models ability to approximate the 'true' model.
+	Estimation error is determined by the date.
+	Intrinsic error cannot be reduced as it is the general randomness in financial markets.
+	The Generalized Linear Model uses nonlinear transformations of the original predictors as new
+	additive terms in an otherwise linear model.
+	Higher order terms enter additively thus predicting the outcome can be achieved with the same
+	tools used for the Simple Linear Model.
+	Using penalization is necessary due to expansion quickly multiplies the number of model parameter.
+	For this the 'group lasso' a specialized spline function is used.
+	
 \subsection{Boosted Regression Trees and Random Forest}
 \subsection{Neural Networks}
 
