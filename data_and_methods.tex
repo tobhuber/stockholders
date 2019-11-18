@@ -1,11 +1,11 @@
-\documentclass[12pt,a4paper,oneside]{book} 
+\documentclass[12pt,a4paper,oneside]{book}
 
 \usepackage{babel}
 \usepackage[utf8]{inputenc}
 
 
 \begin{document}
-	
+
 Three fundamental elements:
 \begin{itemize}
 \item statistical model describing a method’s general functional form for risk premium
@@ -15,13 +15,22 @@ predictions
 transformations.
 \end{itemize}
 
-\subsection{Sample splitting and tuning via validation}
-\subsection{Simple linear}
-\subsection{Penalized linear}
-\subsection{Dimension reduction: PCR and PLS}
-\subsection{Generalized linear}
-\subsection{Boosted regression trees and random forest}
-\subsection{Neural networks}
-	
-	
+\subsection{Sample Splitting And Tuning Via Validation}
+	Hyperparameters (initial parameters set prior to the machine learning process)
+	drastically affect the complexity and therefore overall performance of the model.
+	An adaptive approach is used where the sample is split into the 3 disjoint time periods
+	"training", "validation" and "testing". The "training" period estimates the model
+	subject to a specific set of tuning parameter values. The "validation" period
+	tunes the parameters by simulating an out-of-sample-test of the model
+	to produce reliable out-of-sample performance. The "testing" period is truly
+	out-of-sample and therefore is used to evaluate a method’s predictiveperformance.
+
+\subsection{Simple Linear}
+\subsection{Penalized Linear}
+\subsection{Dimension Reduction: PCR and PLS}
+\subsection{Generalized Linear}
+\subsection{Boosted Regression Trees and Random Forest}
+\subsection{Neural Networks}
+
+
 \end{document}
