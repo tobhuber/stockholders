@@ -1,0 +1,21 @@
+1.1 Primary contributions 
+	- give more informations about the power of ML in prediction and measuring the risk premia
+	- ML can play a big role in the pricing of the empirical assets
+	
+1.2 What's ML 
+	- ML def depends from the context
+	- ML uses a collection of high-dimentional models for statisticalprediction + regularization methods, in order to search some specific potentials for our model 
+	- In our Case a better approximation of risk premia 
+1.3 Why apply ML to Asset Pricing 
+	Three aspects of machine learning make it well suited for problems of ambiguous functional form : 
+	- The first is its diversity. As a suite of dissimilar methods it casts a wide net in its specification search. 
+	- Second, with methods ranging from generalized linear models to regression trees and neural networks, machine learning is explicitly 
+	designed to approximate complex nonlinear associations.
+	- Third, parameter penalization and conservative model selection criteria complement the breadth of functional forms 
+	spanned by these methods in order to avoid overfit biases and false discovery.
+1.4 What specific ML methods do we study 
+	- linear regression	
+	- partial list squares 
+	- regression trees
+	- neural networks
+	
