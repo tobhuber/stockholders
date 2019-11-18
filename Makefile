@@ -1,4 +1,4 @@
-NAME := data_and_methods
+NAME := stockholders
 
 default: prep doc
 all: prep doc

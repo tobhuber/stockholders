@@ -1,4 +1,0 @@
-\subsection {Perfomance Evaluation}
-For the assessment of the performance for stock return forecasts the authors calculate the out-of-sample R² for each method.
-The out-of-sample R² is furthermore modified according to the use case to provide high accuracy on the measurement of indiviual stock returns. 
-To evaluate the results of our analysis, the respective R² for each method is then compared among themselves and to industry benchmarks.
