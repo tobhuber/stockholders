@@ -1,86 +1,59 @@
 \section{Methodology}
 
 \subsection{Sample Splitting And Tuning Via Validation}
-	Hyperparameters (initial parameters set prior to the machine learning process)
-	drastically affect the complexity and therefore overall performance of the model.
-	An adaptive approach is used where the sample is split into the 3 disjoint time periods
-	'training', 'validation' and 'testing'. The 'training' period estimates the model
-	subject to a specific set of tuning parameter values. The 'validation' period
-	tunes the parameters by simulating an out-of-sample-test of the model
-	to produce reliable out-of-sample performance. The 'testing' period is truly
+	Hyperparameters (initial parameters set prior to the machine learning process) drastically affect the complexity and therefore overall performance of the model.
+	An adaptive approach is used where the sample is split into the 3 disjoint time periods 'training', 'validation' and 'testing'. The 'training' period estimates the model subject to a specific set of tuning parameter values. The 'validation' period tunes the parameters by simulating an out-of-sample-test of the model to produce reliable out-of-sample performance. The 'testing' period is truly
 	out-of-sample and therefore is used to evaluate a method’s predictive performance.
 
 \subsection{Simple Linear}
-	Describing the model by simple linear predictive regression will perform poorly in a high
-	dimension problem. Nevertheless it will be used as reference point for emphasizing
-	the distinctive features of more sophisticated methods.
-	While it does not allow for nonlinear effects or interactions between predictors
-	it is sometimes possible to improve accuracy by using weighted least squares.
-	Thus allowing more statistically or economically information.
+	Even though describing the model by simple linear predictive regression is expected perform poorly in a high dimension problem, it is used to help highlight unique characteristics of more sophisticated methods. While it does not allow for nonlinear effects or interactions between predictors, it is possible to improve accuracy by using weighted least squares. Thus resulting in more statistical or economical information.
 
 \subsection{Penalized Linear}
-	When the number of predictors P approaches the number of observations T,
-	the linear model begins to overfit noise and thus becomes inefficient or inconsistent.
-	This problem obviously gets even worse with a bad signal-to-noise ratio.
-	To avoid overfit the number of estimated paramters must be reduced.
+	When the number of predictors approaches the number of observations,
+	the linear model begins to overfit noise and leading to inefficiencies and inconsistencies.
+	This problem gets worse with a bad signal-to-noise ratio.
+	To avoid overfit, the number of estimated parameters must be reduced.
 	The idea to achieve this is to penalize the objective function with a penalty
-	function (e.g. the elastic net) and thus deteriorates the in-sample performance
+	function (e.g. the elastic net) which deteriorates the in-sample performance
 	in hopes of improving the out-of-sample stability.
 
 \subsection{Dimension Reduction: PCR and PLS}
-	PCR consits of to major steps. During the first step PCA creates linear combinations
-	of the regressors. In the second step, a few leading components are used for regression.
-	PCR fails in forecasting returns during the dimension reduction which is ja major drawback.
+	Principal components regression (PCR) consists of two major steps. The first is using principal components analysis (PCA) to create linear combinations of the regressors. In the second step, leading components are used for standard regression.
+	A disadvantage to using PCR is, however, its inability to forecast returns during dimension reduction.
 	\newline
-	PLS estimates the univariate return prediction coefficient for each predictor via OLS
-	and calculates an aggregate component by averaging these weighted values
-	with higher weights on stronger univariate predictors. Thus PLS does not have the
-	same issues as PCR considering the forecasting aspect.
+	Partial least squares (PLS) is used to attempt to counteract this disadvantage. PLS achieves this by estimating the univariate return prediction coefficient for each predictor via ordinary least squares (OLS)
+	and calculating an aggregate component by averaging these weighted values
+	with higher weights on stronger univariate predictors.
 
 \subsection{Generalized Linear}
-	Finding a linear model for a complex and nonlinear function introduces some problems:
-	\begin{itemize}
-		\item approximation errors
-		\item estimation errors
-		\item intrinsic errors
-	\end{itemize}
-	Approximation error can be reduced by including more flexible specifications to improve the
+	Finding a linear model for a complex and nonlinear function introduces problems regarding approximation, estimation and intrinsic errors.
+	Approximation errors can be reduced by including more flexible specifications to improve the
 	models ability to approximate the 'true' model.
-	Estimation error is determined by the date.
-	Intrinsic error cannot be reduced as it is the general randomness in financial markets.
-	The Generalized Linear Model uses nonlinear transformations of the original predictors as new
+	Estimation errors are determined by the date.
+	Intrinsic errors cannot be reduced as it represents the general randomness in financial markets.
+	The generalized linear model uses nonlinear transformations of the original predictors as new
 	additive terms in an otherwise linear model.
-	Higher order terms enter additively thus predicting the outcome can be achieved with the same
-	tools used for the Simple Linear Model.
-	Using penalization is necessary due to expansion quickly multiplies the number of model parameter.
-	For this the 'group lasso' a specialized spline function is used.
+	Higher order terms enter additively thus predicting the outcome can be achieved in a similar fashion to the simple linear model.
+	Using penalization is necessary as series expansion quickly multiplies the number of model parameters.
+	For this a specialized spline function called group lasso is used.
 
 \subsection{Boosted Regression Trees and Random Forest}
-	Regression trees have no Parameters but a build in logic instead.
-	The tree grows in a sequence of steps in which a branch sorts data assigned from
-	a preceding step into different categories based on a variable of the predictor
-	thus creating groups of observations with similar behaviour or logic.
+	Regression trees have no parameters but a built-in logic instead.
+	The tree grows in a sequence of steps in which a branch sorts data assigned from a preceding step into different categories based on a variable of the predictor thus creating groups of observations with similar behaviour or logic.
 	Forecasts are made by calculating the average of outcome variables inside each group.
 	While trees are invariant to monotonic transformations of predictors they are
-	also most proned to overfit and therefore must be regulized which can be done
-	by either 'Boosting' or 'Random Forest'. Both ideas recursively combine
-	forecasts of multiple trees but while Boosting uses many simplified trees
-	Random Trees tries to combine a high variation of trees to reduce their correlation.
+	also most prone to overfit and therefore must be regularized. This can either be done through 'boosting' or 'random forest'. Both ideas recursively combine
+	forecasts of multiple trees but while boosting uses many simplified trees, random trees tries to combine a high variation of trees to reduce their correlation.
 
 \subsection{Neural Networks}
-	A 'feed-forward' (nodes do not form a cycle) network consists of three parts:
-	\begin{itemize}
-		\item input layer
-		\item hidden layers
-		\item output layer
-	\end{itemize}
+	A 'feed-forward' (nodes do not form a cycle) network consists of three parts: the input layer, the hidden layers and the output layer.
 	The input layer handles a set of variables and passes them to following hidden layers.
-	These interact and nonlinearly transform the data until the output layer aggregates the data
+	These interact and non-linearly transform the data until the output layer aggregates the data
 	into one ultimate outcome prediction.
 	Recent literature suggests that deeper networks (more hidden layers) can achieve the same
 	accuracy with less input parameters.
 	However training a very deep neural network is challenging and thus for small data sets
 	a compact network often performs best.
-	Because of their high degree of nonlinearity and nonconvexity brute force optimisation is
+	Because of their high degree of non-linearity and non-convexity brute force optimization is
 	highly computationally intensive. Therefore a common solution for training is stochastic
 	gradient descent where only a random set of data is used.
