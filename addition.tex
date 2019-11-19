@@ -1,4 +1,7 @@
 \subsection{Perfomance Evaluation}
-For the assessment of the performance for stock return forecasts the authors calculate the out-of-sample $R^{2}_{oos}$ for each method.
-The out-of-sample $R^{2}_{oos}$ is furthermore modified according to the use case to provide high accuracy on the measurement of indiviual stock returns.
-To evaluate the results of our analysis, the respective $R^{2}_{oos}$ for each method is then compared among themselves and to industry benchmarks.
+For the assessment of the performance of stock return forecasts the authors calculate the out-of-sample $R^{2}_{oos}$ for each method.
+This $R^{2}_{oos}$ is further modified according to the use case to provide high accuracy on the measurement of indiviual stock returns.
+To evaluate the results of the analysis, the respective $R^{2}_{oos}$ for each method is then compared to each other and to industry benchmarks.
+
+\subsection{Variable Importance and Marginal Relationships}
+In order to determine the significance of each conditioning variable two methods are used. First, the change in panel predictive $R^{2}$ is measured when changing the value of the variable being tested to 0 and holding all other variable values the same. Secondly, the sum of squared partial derivatives is used to deduce how sensitive the model is to shifts in that variable.
